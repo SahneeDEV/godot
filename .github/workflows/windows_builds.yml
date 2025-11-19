@@ -9,7 +9,7 @@ env:
     dev_mode=yes
     module_text_server_fb_enabled=yes
     debug_symbols=no
-    d3d12=yes
+    d3d12=no
     "angle_libs=${{ github.workspace }}/"
     "accesskit_sdk_path=${{ github.workspace }}/accesskit-c-0.17.0/"
   SCONS_CACHE_MSVC_CONFIG: true
@@ -37,6 +37,7 @@ jobs:
             bin: ./bin/godot.windows.editor.double.x86_64.mono.exe
             compiler: msvc
             build-mono: true
+            d3d12: false
 
           #- name: Editor (target=editor)
           #  cache-name: windows-editor
@@ -94,6 +95,7 @@ jobs:
           dotnet-version: 8.0.100
 
       - name: Download Direct3D 12 SDK components
+        if: matrix.d3d12
         run: python ./misc/scripts/install_d3d12_sdk_windows.py
 
       - name: Download pre-built ANGLE static libraries
@@ -135,12 +137,16 @@ jobs:
         if: matrix.build-mono
         run: |
           ${{ matrix.bin }} --headless --generate-mono-glue ./modules/mono/glue
+          tree
+          ls
 
       - name: Build .NET solutions
         if: matrix.build-mono
         run: |
           dotnet --info
           ./modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=windows
+          tree
+          ls
 
       - name: Prepare artifact
         if: matrix.compiler == 'msvc'
@@ -162,4 +168,6 @@ jobs:
       - name: .NET source generators tests
         if: matrix.build-mono
         run: |
+          tree
+          ls
           dotnet test modules/mono/editor/Godot.NET.Sdk/Godot.SourceGenerators.Tests
