@@ -137,16 +137,12 @@ jobs:
         if: matrix.build-mono
         run: |
           ${{ matrix.bin }} --headless --generate-mono-glue ./modules/mono/glue
-          tree
-          ls
 
       - name: Build .NET solutions
         if: matrix.build-mono
+        #  dotnet --info
         run: |
-          dotnet --info
           ./modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=windows
-          tree
-          ls
 
       - name: Prepare artifact
         if: matrix.compiler == 'msvc'
@@ -168,6 +164,4 @@ jobs:
       - name: .NET source generators tests
         if: matrix.build-mono
         run: |
-          tree
-          ls
           dotnet test modules/mono/editor/Godot.NET.Sdk/Godot.SourceGenerators.Tests
