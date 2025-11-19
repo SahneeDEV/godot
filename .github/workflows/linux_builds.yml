@@ -35,12 +35,9 @@ jobs:
               module_mono_enabled=yes
             bin: ./bin/godot.linuxbsd.editor.double.x86_64.mono
             build-mono: true
-            doc-test: true
             proj-conv: true
             api-compat: true
             artifact: true
-            # Validate godot-cpp compatibility on one arbitrary editor build.
-            godot-cpp: true
 
     steps:
       - name: Checkout
@@ -113,14 +110,6 @@ jobs:
           scons-flags: ${{ env.SCONS_FLAGS }} ${{ matrix.scons-flags }}
           platform: linuxbsd
           target: ${{ matrix.target }}
-
-      #- name: Compilation (godot-cpp)
-      #  uses: ./.github/actions/godot-cpp-build
-      #  if: matrix.godot-cpp
-      #  with:
-      #    bin: ${{ matrix.bin }}
-      #    scons-flags: target=template_debug dev_build=yes verbose=yes precision=double
-      #    godot-cpp-branch: ${{ env.GODOT_CPP_BRANCH }}
 
       - name: Save Godot build cache
         uses: ./.github/actions/godot-cache-save

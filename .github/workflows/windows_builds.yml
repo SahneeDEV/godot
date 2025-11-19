@@ -36,6 +36,7 @@ jobs:
               vsproj_gen_only=no
             bin: ./bin/godot.windows.editor.double.x86_64.mono.exe
             compiler: msvc
+            build-mono: true
 
           #- name: Editor (target=editor)
           #  cache-name: windows-editor
