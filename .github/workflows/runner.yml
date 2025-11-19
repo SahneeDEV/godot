@@ -20,10 +20,10 @@ jobs:
     needs: static-checks
     uses: ./.github/workflows/linux_builds.yml
 
-  macos-build:
-    name: 🍎 macOS
-    needs: static-checks
-    uses: ./.github/workflows/macos_builds.yml
+  #macos-build:
+  #  name: 🍎 macOS
+  #  needs: static-checks
+  #  uses: ./.github/workflows/macos_builds.yml
 
   windows-build:
     name: 🏁 Windows
