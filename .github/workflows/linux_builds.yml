@@ -33,7 +33,7 @@ jobs:
             scons-flags: >-
               precision=double
               module_mono_enabled=yes
-            bin: ./bin/godot.linuxbsd.editor.x86_64.mono
+            bin: ./bin/godot.linuxbsd.editor.double.x86_64.mono
             build-mono: true
             doc-test: true
             proj-conv: true
