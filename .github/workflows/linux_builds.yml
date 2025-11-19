@@ -114,13 +114,13 @@ jobs:
           platform: linuxbsd
           target: ${{ matrix.target }}
 
-      - name: Compilation (godot-cpp)
-        uses: ./.github/actions/godot-cpp-build
-        if: matrix.godot-cpp
-        with:
-          bin: ${{ matrix.bin }}
-          scons-flags: target=template_debug dev_build=yes verbose=yes
-          godot-cpp-branch: ${{ env.GODOT_CPP_BRANCH }}
+      #- name: Compilation (godot-cpp)
+      #  uses: ./.github/actions/godot-cpp-build
+      #  if: matrix.godot-cpp
+      #  with:
+      #    bin: ${{ matrix.bin }}
+      #    scons-flags: target=template_debug dev_build=yes verbose=yes precision=double
+      #    godot-cpp-branch: ${{ env.GODOT_CPP_BRANCH }}
 
       - name: Save Godot build cache
         uses: ./.github/actions/godot-cache-save
