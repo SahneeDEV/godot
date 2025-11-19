@@ -34,7 +34,7 @@ jobs:
               windows_subsystem=console
               vsproj=yes
               vsproj_gen_only=no
-            bin: ./bin/godot.windows.editor.double.x86_64.exe
+            bin: ./bin/godot.windows.editor.double.x86_64.mono.exe
             compiler: msvc
 
           #- name: Editor (target=editor)
