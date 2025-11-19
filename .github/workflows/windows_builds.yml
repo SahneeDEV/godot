@@ -140,8 +140,8 @@ jobs:
 
       - name: Build .NET solutions
         if: matrix.build-mono
-        #  dotnet --info
         run: |
+          dotnet --info
           python ./modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=windows
 
       - name: Prepare artifact
