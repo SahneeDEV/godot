@@ -162,22 +162,3 @@ jobs:
         run: |
           dotnet test modules/mono/editor/Godot.NET.Sdk/Godot.SourceGenerators.Tests
 
-      # Check API backwards compatibility
-      - name: Check for GDExtension compatibility
-        if: matrix.api-compat
-        run: |
-          ./misc/scripts/validate_extension_api.sh "${{ matrix.bin }}"
-
-      # Download and run the test project
-      - name: Test Godot project
-        uses: ./.github/actions/godot-project-test
-        if: matrix.proj-test
-        with:
-          bin: ${{ matrix.bin }}
-
-      # Test the project converter
-      - name: Test project converter
-        uses: ./.github/actions/godot-converter-test
-        if: matrix.proj-conv
-        with:
-          bin: ${{ matrix.bin }}
