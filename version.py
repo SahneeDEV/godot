@@ -1,5 +1,5 @@
-short_name = "godot"
-name = "Godot Engine"
+short_name = "godot-sahnee"
+name = "Godot Engine (Sahnee Fork)"
 major = 4
 minor = 5
 patch = 2
