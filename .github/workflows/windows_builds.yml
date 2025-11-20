@@ -9,7 +9,7 @@ env:
     dev_mode=yes
     module_text_server_fb_enabled=yes
     debug_symbols=no
-    d3d12=no
+    d3d12=yes
     "angle_libs=${{ github.workspace }}/"
     "accesskit_sdk_path=${{ github.workspace }}/accesskit-c-0.17.0/"
   SCONS_CACHE_MSVC_CONFIG: true
@@ -37,7 +37,7 @@ jobs:
             bin: ./bin/godot.windows.editor.double.x86_64.mono.exe
             compiler: msvc
             build-mono: true
-            d3d12: false
+            d3d12: true
 
           #- name: Editor (target=editor)
           #  cache-name: windows-editor
